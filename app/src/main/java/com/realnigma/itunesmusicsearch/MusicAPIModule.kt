@@ -12,13 +12,11 @@ class MusicAPIModule {
     @Provides
     @Singleton
     fun provideApi() : ITunesAPI {
-
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(ITunesAPI::class.java)
-
     }
 
     companion object {

@@ -4,7 +4,7 @@ import dagger.Component
 import javax.inject.Singleton
 
 @Singleton
-@Component
+@Component(modules = [MusicAPIModule::class])
 interface MusicAPIComponent {
     fun inject(viewModel: MusicViewModel)
 }

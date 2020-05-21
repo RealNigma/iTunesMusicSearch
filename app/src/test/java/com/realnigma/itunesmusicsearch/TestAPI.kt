@@ -1,5 +1,6 @@
 package com.realnigma.itunesmusicsearch
 
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -17,7 +18,12 @@ class TestAPI {
     }
 
     @Test
-    fun testRepository() {
-        //val repository = MusicRepository(musicAPI = ITunesAPI)
+    fun testViewModel() {
+
+        val viewModel = MusicViewModel()
+        viewModel.searchAlbum("234")
+        Thread.sleep(2000)
+        assertFalse(viewModel.repository.albumResult!!.isNullOrEmpty())
+
     }
 }
