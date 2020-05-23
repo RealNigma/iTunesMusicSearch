@@ -1,29 +1,33 @@
 package com.realnigma.itunesmusicsearch
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Ignore
+import org.junit.Rule
 import org.junit.Test
+import org.mockito.InjectMocks
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
 
 class TestAPI {
 
-    @Test
-    fun testAPI() {
-        val api  = MusicAPIModule()
-        val albumResponse = api.provideApi().searchAlbum("recovery").execute()
-        val music = albumResponse.body()
-        val collectionId : Int? = music?.result!![0].collectionId
-        val songResponse = api.provideApi().lookupAllTracksFromAlbum(collectionId).execute()
-        assertTrue(albumResponse.isSuccessful)
-        assertTrue(songResponse.isSuccessful)
+    @get: Rule
+    var rule = InstantTaskExecutorRule()
+
+    @InjectMocks
+    lateinit var viewModel: MusicViewModel
+
+    @Before
+    fun setup() {
+        MockitoAnnotations.initMocks(this)
     }
 
     @Test
     fun testViewModel() {
-
-        val viewModel = MusicViewModel()
-        viewModel.searchAlbum("234")
-        Thread.sleep(2000)
-        assertFalse(viewModel.repository.albumResult!!.isNullOrEmpty())
-
+        viewModel.searchAlbum("eminem")
+        assertFalse(viewModel.albumResult.isNullOrEmpty())
     }
+
 }

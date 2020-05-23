@@ -1,5 +1,6 @@
 package com.realnigma.itunesmusicsearch
 
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -11,13 +12,13 @@ interface ITunesAPI {
         @Query("term") query : String,
         @Query("media") media : String = "music",
         @Query("entity") entity : String = "album"
-    ) : Call<AlbumResponse>
+    ) : Single<AlbumResponse>
 
     @GET("lookup")
     fun lookupAllTracksFromAlbum(
         @Query("id") collectionId: Int?,
         @Query("entity") entity: String = "song",
         @Query("media") media: String = "music"
-    ) : Call<SongResponse>
+    ) : Single<SongResponse>
 
 }

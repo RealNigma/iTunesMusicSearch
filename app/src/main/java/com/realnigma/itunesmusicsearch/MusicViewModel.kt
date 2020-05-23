@@ -1,8 +1,10 @@
 package com.realnigma.itunesmusicsearch
 
+import android.util.Log
+import androidx.lifecycle.ViewModel
 import javax.inject.Inject
 
-class MusicViewModel {
+class MusicViewModel : ViewModel() {
 
     @Inject lateinit var repository: MusicRepository
 
