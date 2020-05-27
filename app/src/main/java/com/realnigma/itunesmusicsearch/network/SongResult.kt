@@ -1,4 +1,4 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.network
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,9 +1,9 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.network
 
 import com.google.gson.annotations.SerializedName
 
 data class AlbumResponse(
     @SerializedName("resultCount") val resultsCount : Int,
-    @SerializedName("results") val result : List<AlbumResult>)
+    @SerializedName("results") val results : List<AlbumResult>)
 
 

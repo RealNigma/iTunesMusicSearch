@@ -1,5 +1,6 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.dagger
 
+import com.realnigma.itunesmusicsearch.network.ITunesAPI
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -10,6 +11,7 @@ import javax.inject.Singleton
 @Module
 class MusicAPIModule {
 
+    @Singleton
     @Provides
     fun provideApi() : ITunesAPI {
         return Retrofit.Builder()
@@ -18,11 +20,6 @@ class MusicAPIModule {
            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
             .create(ITunesAPI::class.java)
-    }
-
-    @Provides
-    fun provideMusicRepository() : MusicRepository {
-        return MusicRepository()
     }
 
     companion object {
