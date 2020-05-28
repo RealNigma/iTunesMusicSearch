@@ -48,7 +48,7 @@ class AlbumAdapter:
             genreName.text = album.primaryGenreName
             trackCount.text = album.trackCount.toString() + " tracks"
             ImageLoader.loadImage(album.artworkUrl100, albumImage)
-            //albumCard.setOnClickListener { onClick(it, album)}
+            albumCard.setOnClickListener { onClick(it, album)}
         }
 
         private fun onClick(view: View, album : AlbumResult) {

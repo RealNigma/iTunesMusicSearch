@@ -2,4 +2,9 @@
     <string name="app_name">iTunes Music Search</string>
     <string name="find_album">Find album</string>
     <string name="album_image_desc">Album Image</string>
+    <string name="release_date">Release date: %s</string>
+    <string name="genre">Genre: %s</string>
+    <string name="country">Country: %s</string>
+    <string name="trackCount">%d tracks</string>
+
 </resources>

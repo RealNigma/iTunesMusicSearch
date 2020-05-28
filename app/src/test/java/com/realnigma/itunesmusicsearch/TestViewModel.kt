@@ -16,6 +16,7 @@ import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.MockitoAnnotations
+import java.util.*
 import java.util.concurrent.Executor
 import java.util.concurrent.TimeUnit
 
@@ -93,7 +94,18 @@ class TestViewModel {
     @Test
     fun testSongLookup() {
 
-        val hypnoDancerSong = SongResult("Hypnodancer")
+        val hypnoDancerSong = SongResult(
+            "Hypnodancer",
+            1,
+            500,
+            "http://link.com",
+            "Little Big",
+            "Hypnodancer",
+            "Pop",
+            "USA",
+            Calendar.getInstance().time,
+            "Copyright"
+                                        )
         val songList = arrayListOf(hypnoDancerSong)
         val songResponse = SongResponse(1, songList)
         fakeSongData = Single.just(songResponse)

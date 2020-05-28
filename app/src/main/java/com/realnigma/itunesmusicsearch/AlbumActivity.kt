@@ -27,7 +27,7 @@ class AlbumActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         initViewModel()
-        //viewModel.searchAlbum("Guns N Roses")
+        viewModel.searchAlbum("Guns N Roses")
         initRecyclerView()
 
     }
