@@ -34,8 +34,9 @@ class AlbumActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         albumRecyclerView.apply {
-            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-            addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
+            //layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+            //addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
             adapter = albumAdapter
         }
     }

@@ -29,6 +29,8 @@
         android:lines="1"
 
         android:layout_weight="1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+
 
         tools:text="Hypnodancer"
         android:textSize="15sp"

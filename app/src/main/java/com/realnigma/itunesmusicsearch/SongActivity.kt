@@ -3,7 +3,6 @@ package com.realnigma.itunesmusicsearch
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -11,11 +10,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.realnigma.itunesmusicsearch.network.ImageLoader
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_song.*
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 class SongActivity : AppCompatActivity() {
 
@@ -39,6 +36,7 @@ class SongActivity : AppCompatActivity() {
         viewModel.songResult.observe(this, Observer { song ->
             song?.let {
                 ImageLoader.loadImage(it[0].artworkUrl100 , albumImage)
+                ImageLoader.loadImage(it[0].artworkUrl100, wideAlbumImage)
                 albumName.text = it[0].collectionName
                 artistName.text = it[0].artistName
                 genreName.text = getString(R.string.genre, it[0].primaryGenreName)

@@ -65,7 +65,8 @@ class TestViewModel {
             "Recovery",
                         "https://is3-ssl.mzstatic.com/image/thumb/Music128/v4/f7/59/98/f75998c1-8562-8e0c-c2ef-e4e4b58af13d/source/100x100bb.jpg",
                         "Hip-hop",
-                        20
+                        20,
+                        Calendar.getInstance().time
         )
         val littleBigAlbum = AlbumResult(
             2,
@@ -73,7 +74,8 @@ class TestViewModel {
             "Antipositive",
             "https://is3-ssl.mzstatic.com/image/thumb/Music128/v4/be/94/31/be943176-e4d4-caac-f0a8-2150f367911a/source/100x100bb.jpg",
                     "Pop",
-            10
+            10,
+            Calendar.getInstance().time
         )
         val albumList = arrayListOf(eminemAlbum, littleBigAlbum)
         val albumResponse =

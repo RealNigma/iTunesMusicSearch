@@ -1,5 +1,6 @@
 package com.realnigma.itunesmusicsearch
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.realnigma.itunesmusicsearch.network.AlbumResult
 import com.realnigma.itunesmusicsearch.network.ImageLoader
 import kotlinx.android.synthetic.main.album_item.view.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class AlbumAdapter:
     RecyclerView.Adapter<AlbumAdapter.AlbumViewHolder>() {
@@ -17,6 +21,7 @@ class AlbumAdapter:
     fun updateAlbums(albums: List<AlbumResult>) {
         this.albums.clear()
         this.albums.addAll(albums)
+        this.albums.sortBy { it.albumName }
         notifyDataSetChanged()
     }
 
@@ -37,16 +42,17 @@ class AlbumAdapter:
         private val albumCard = view.albumCard
 
         private val albumName = view.albumName
-        private val artistName = view.artistName
+        //private val artistName = view.artistName
+        private val releaseDate = view.releaseDate
         private val albumImage = view.albumImage
-        private val genreName = view.genreName
-        private val trackCount = view.trackNumber
+        //private val genreName = view.genreName
+       // private val trackCount = view.trackNumber
 
         fun bind(album : AlbumResult) {
             albumName.text = album.albumName
-            artistName.text = album.artistName
-            genreName.text = album.primaryGenreName
-            trackCount.text = album.trackCount.toString() + " tracks"
+            releaseDate.text = convertDate(album.releaseDate)
+            //genreName.text = album.primaryGenreName
+            //trackCount.text = album.trackCount.toString() + " tracks"
             ImageLoader.loadImage(album.artworkUrl100, albumImage)
             albumCard.setOnClickListener { onClick(it, album)}
         }
@@ -56,6 +62,12 @@ class AlbumAdapter:
             val intent = Intent(context, SongActivity::class.java)
             intent.putExtra("collectionId", album.collectionId)
             context.startActivity(intent)
+        }
+
+        @SuppressLint("SimpleDateFormat")
+        private fun  convertDate(date: Date): String {
+            val timeFormatter = SimpleDateFormat("yyyy")
+            return timeFormatter.format(date)
         }
 
     }
