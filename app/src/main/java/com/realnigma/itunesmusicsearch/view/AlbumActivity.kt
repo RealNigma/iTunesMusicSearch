@@ -6,6 +6,7 @@ import android.view.Menu
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.realnigma.itunesmusicsearch.viewmodel.MusicViewModel
 import com.realnigma.itunesmusicsearch.R
@@ -13,18 +14,51 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class AlbumActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MusicViewModel
-    private var albumAdapter =
-        AlbumAdapter()
+    private lateinit var musicViewModel: MusicViewModel
+    private var albumAdapter = AlbumAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         initViewModel()
-        viewModel.searchAlbum("Guns N Roses")
         initRecyclerView()
 
+        albumRecyclerViewOnScrollListener()
+        floatingButtonOnClickListener()
+
+    }
+
+    private fun floatingButtonOnClickListener() {
+        searchFloatingActionButton.setOnClickListener {
+
+            val searchMenuItem = findViewById<SearchView>(R.id.searchView)
+            searchMenuItem.onActionViewExpanded()
+            searchFloatingActionButton.hide()
+
+        }
+    }
+
+    private fun albumRecyclerViewOnScrollListener() {
+        albumRecyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    searchFloatingActionButton.show()
+                }
+                super.onScrollStateChanged(recyclerView, newState)
+            }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy != 0) {
+                    if (searchFloatingActionButton.isShown) {
+                        searchFloatingActionButton.hide()
+                    }
+                }
+            }
+
+        })
     }
 
     private fun initRecyclerView() {
@@ -35,26 +69,27 @@ class AlbumActivity : AppCompatActivity() {
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
+        musicViewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
 
-        viewModel.albumResult.observe(this, Observer { albums ->
+        musicViewModel.albumResult.observe(this, Observer { albums ->
             albums?.let { albumAdapter.updateAlbums(it) }
         })
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_menu, menu)
 
-            val menuItem = menu?.findItem(R.id.search)
+            val menuItem = menu?.findItem(R.id.searchView)
             val searchMenuItem = menuItem?.actionView
 
             if (searchMenuItem is SearchView) {
                 searchMenuItem.queryHint = getString(R.string.find_album)
-                // searchMenuItem.onActionViewExpanded()
                 searchMenuItem.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String): Boolean {
-                        viewModel.searchAlbum(query)
-                        menuItem.collapseActionView()
+                        musicViewModel.searchAlbum(query)
+                        searchMenuItem.onActionViewCollapsed()
+                        searchFloatingActionButton.show()
                         return false
                     }
 

@@ -18,7 +18,7 @@ import java.util.*
 
 class SongActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: MusicViewModel
+    private lateinit var musicViewModel: MusicViewModel
     private var songAdapter = SongAdapter()
 
     private val collectionId : Int by lazy { intent.getIntExtra("collectionId" , 0) }
@@ -29,13 +29,13 @@ class SongActivity : AppCompatActivity() {
 
         initViewModel()
         initRecyclerView()
-        viewModel.lookupAllTracksFromAlbum(collectionId)
+        musicViewModel.lookupAllTracksFromAlbum(collectionId)
     }
 
     private fun initViewModel() {
-        viewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
+        musicViewModel = ViewModelProvider(this).get(MusicViewModel::class.java)
 
-        viewModel.songResult.observe(this, Observer { song ->
+        musicViewModel.songResult.observe(this, Observer { song ->
             song?.let {
                 ImageLoader.loadImage(it[0].artworkUrl100 , albumImage)
                 ImageLoader.loadImage(it[0].artworkUrl100, wideAlbumImage)

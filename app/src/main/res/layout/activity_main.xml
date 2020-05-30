@@ -37,15 +37,18 @@
     </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/searchFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="18dp"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="invisible"
+        android:windowSoftInputMode="adjustResize"
+        app:layout_anchor="@id/albumRecyclerView"
+        app:layout_anchorGravity="bottom|right|end"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_search_white_24dp" />
+        app:srcCompat="@drawable/ic_search_white_24dp"
+        tools:ignore="NotSibling" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
