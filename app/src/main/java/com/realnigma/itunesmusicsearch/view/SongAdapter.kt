@@ -1,9 +1,10 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.realnigma.itunesmusicsearch.R
 import com.realnigma.itunesmusicsearch.network.SongResult
 import kotlinx.android.synthetic.main.song_item.view.*
 import java.util.concurrent.TimeUnit
@@ -23,9 +24,12 @@ class SongAdapter :
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int) = SongViewHolder(
-        LayoutInflater.from(parent.context).inflate(
-            R.layout.song_item, parent, false))
+        viewType: Int) =
+        SongViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.song_item, parent, false
+            )
+        )
 
     override fun getItemCount(): Int = songs.size
 

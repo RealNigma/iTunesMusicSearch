@@ -14,4 +14,4 @@ data class SongResult(
     @SerializedName("country") val country : String,
     @SerializedName("releaseDate") val releaseDate : Date,
     @SerializedName("copyright") val copyright : String
-    )
+)

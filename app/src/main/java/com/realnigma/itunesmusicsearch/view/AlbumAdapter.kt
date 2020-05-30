@@ -1,4 +1,4 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.realnigma.itunesmusicsearch.R
 import com.realnigma.itunesmusicsearch.network.AlbumResult
-import com.realnigma.itunesmusicsearch.network.ImageLoader
+import com.realnigma.itunesmusicsearch.utils.ImageLoader
 import kotlinx.android.synthetic.main.album_item.view.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -27,9 +28,14 @@ class AlbumAdapter:
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int) = AlbumViewHolder(
-       LayoutInflater.from(parent.context).inflate(
-           R.layout.album_item, parent, false))
+        viewType: Int) =
+        AlbumViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.album_item,
+                parent,
+                false
+            )
+        )
 
     override fun getItemCount(): Int = albums.size
 
@@ -42,17 +48,12 @@ class AlbumAdapter:
         private val albumCard = view.albumCard
 
         private val albumName = view.albumName
-        //private val artistName = view.artistName
         private val releaseDate = view.releaseDate
         private val albumImage = view.albumImage
-        //private val genreName = view.genreName
-       // private val trackCount = view.trackNumber
 
         fun bind(album : AlbumResult) {
             albumName.text = album.albumName
             releaseDate.text = convertDate(album.releaseDate)
-            //genreName.text = album.primaryGenreName
-            //trackCount.text = album.trackCount.toString() + " tracks"
             ImageLoader.loadImage(album.artworkUrl100, albumImage)
             albumCard.setOnClickListener { onClick(it, album)}
         }

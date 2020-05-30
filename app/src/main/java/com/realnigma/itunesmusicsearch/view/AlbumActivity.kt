@@ -1,26 +1,21 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.view
 
-import android.app.SearchManager
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.MenuItem
-import android.widget.LinearLayout
 import android.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.realnigma.itunesmusicsearch.viewmodel.MusicViewModel
+import com.realnigma.itunesmusicsearch.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class AlbumActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MusicViewModel
-    private var albumAdapter = AlbumAdapter()
+    private var albumAdapter =
+        AlbumAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +29,7 @@ class AlbumActivity : AppCompatActivity() {
 
     private fun initRecyclerView() {
         albumRecyclerView.apply {
-            //layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-            //addItemDecoration(DividerItemDecoration(context, LinearLayout.VERTICAL))
             adapter = albumAdapter
         }
     }

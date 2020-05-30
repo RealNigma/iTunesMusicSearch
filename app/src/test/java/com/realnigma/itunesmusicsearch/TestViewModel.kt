@@ -2,6 +2,7 @@ package com.realnigma.itunesmusicsearch
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.realnigma.itunesmusicsearch.network.*
+import com.realnigma.itunesmusicsearch.viewmodel.MusicViewModel
 import io.reactivex.Scheduler
 import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
@@ -63,17 +64,17 @@ class TestViewModel {
             1,
             "Eminem",
             "Recovery",
-                        "https://is3-ssl.mzstatic.com/image/thumb/Music128/v4/f7/59/98/f75998c1-8562-8e0c-c2ef-e4e4b58af13d/source/100x100bb.jpg",
-                        "Hip-hop",
-                        20,
-                        Calendar.getInstance().time
+            "https://is3-ssl.mzstatic.com/image/thumb/Music128/v4/f7/59/98/f75998c1-8562-8e0c-c2ef-e4e4b58af13d/source/100x100bb.jpg",
+            "Hip-hop",
+            20,
+            Calendar.getInstance().time
         )
         val littleBigAlbum = AlbumResult(
             2,
             "Little Big",
             "Antipositive",
             "https://is3-ssl.mzstatic.com/image/thumb/Music128/v4/be/94/31/be943176-e4d4-caac-f0a8-2150f367911a/source/100x100bb.jpg",
-                    "Pop",
+            "Pop",
             10,
             Calendar.getInstance().time
         )

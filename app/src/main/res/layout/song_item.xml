@@ -4,9 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
-
     android:gravity="center_vertical"
-
     android:layout_marginBottom="8dp"
     android:layout_marginTop="8dp">
 
@@ -14,7 +12,6 @@
         android:id="@+id/trackNumber"
         android:layout_width="20dp"
         android:layout_height="wrap_content"
-
         android:gravity="center"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="16dp"
@@ -27,11 +24,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:lines="1"
-
         android:layout_weight="1"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-
-
         tools:text="Hypnodancer"
         android:textSize="15sp"
         />
@@ -40,9 +34,7 @@
         android:id="@+id/trackTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_marginEnd="10dp"
-
         tools:text="2:28"
         android:textSize="15sp"/>
 

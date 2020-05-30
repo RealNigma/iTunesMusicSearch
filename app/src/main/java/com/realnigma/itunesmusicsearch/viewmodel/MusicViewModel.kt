@@ -1,7 +1,5 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.realnigma.itunesmusicsearch.dagger.DaggerMusicAPIComponent
@@ -37,13 +35,11 @@ class MusicViewModel : ViewModel() {
                     override fun onSuccess(t: AlbumResponse) {
                         albumResult.value = t.results
                         albumResultCount.value = t.resultsCount
-                        //Log.w("iTunes", "result: ${t.results}, query: $query" )
                     }
 
                     override fun onError(e: Throwable) {
                         error = e.localizedMessage
                         hasError = true
-                        //Log.w("iTunes", error)
                     }
                 })
         )
@@ -61,13 +57,11 @@ class MusicViewModel : ViewModel() {
                     override fun onSuccess(t: SongResponse) {
                         songResult.value = t.results
                         songResultCount.value = t.resultsCount
-                        Log.w("iTunes", "result: ${t.results}, id: $id" )
                     }
 
                     override fun onError(e: Throwable) {
                         error = e.localizedMessage
                         hasError = true
-                        Log.w("iTunes", error)
                     }
                 })
 

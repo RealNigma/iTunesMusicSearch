@@ -1,4 +1,4 @@
-package com.realnigma.itunesmusicsearch
+package com.realnigma.itunesmusicsearch.view
 
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.realnigma.itunesmusicsearch.network.ImageLoader
+import com.realnigma.itunesmusicsearch.viewmodel.MusicViewModel
+import com.realnigma.itunesmusicsearch.R
+import com.realnigma.itunesmusicsearch.utils.ImageLoader
 import kotlinx.android.synthetic.main.activity_song.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,7 +21,7 @@ class SongActivity : AppCompatActivity() {
     private lateinit var viewModel: MusicViewModel
     private var songAdapter = SongAdapter()
 
-    private val collectionId : Int by lazy { intent.getIntExtra("collectionId" ,0) }
+    private val collectionId : Int by lazy { intent.getIntExtra("collectionId" , 0) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

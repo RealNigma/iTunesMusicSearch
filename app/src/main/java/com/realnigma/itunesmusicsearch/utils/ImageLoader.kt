@@ -1,4 +1,4 @@
-package com.realnigma.itunesmusicsearch.network
+package com.realnigma.itunesmusicsearch.utils
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
